@@ -19,7 +19,7 @@ class Sensor {
         }
     }
 
-    #getReading(ray, road){
+    #getReading(ray, roadBorders){
         let touches = [];
 
         for(let i=0; i<roadBorders.length;i++){
@@ -64,6 +64,10 @@ class Sensor {
 
     draw(ctx){
         for(let i=0; i<this.rayCount;i++){
+            let end = this.rays[i][1];
+            if(this.readings[i]){
+                end = this.readings[i];
+            }
             ctx.beginPath();
             ctx.lineWidth=2;
             ctx.strokeStyle="yellow";
@@ -72,8 +76,21 @@ class Sensor {
                 this.rays[i][0].y
             );
             ctx.lineTo(
+                end.x,
+                end.y
+            );
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.lineWidth=2;
+            ctx.strokeStyle="black";
+            ctx.moveTo(
                 this.rays[i][1].x,
                 this.rays[i][1].y
+            );
+            ctx.lineTo(
+                end.x,
+                end.y
             );
             ctx.stroke();
         }
