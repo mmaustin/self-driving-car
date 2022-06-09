@@ -88,7 +88,7 @@ class Car{
         }
         ctx.fill();
 
-        ctx.save();
+        /*ctx.save();
         ctx.translate(this.x,this.y);
         ctx.rotate(-this.angle);
 
@@ -101,7 +101,7 @@ class Car{
         );
         ctx.fill();
 
-        ctx.restore();
+        ctx.restore();*/
 
         this.sensor.draw(ctx);
     }
